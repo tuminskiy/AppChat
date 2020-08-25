@@ -54,7 +54,10 @@ target_link_libraries (${CLIENT_NAME}
 if (WIN32)
     add_definitions(-DWIN32_LEAN_AND_MEAN)
     target_link_libraries(${CLIENT_NAME} -lws2_32)
-endif (WIN32)
+
+    include(${CMAKE_SOURCE_DIR}/cmake/DeployQt.cmake)
+    windeployqt(${CLIENT_NAME})
+endif()
 
 if (NOT WIN32)
     install(TARGETS ${CLIENT_NAME} RUNTIME DESTINATION bin)
