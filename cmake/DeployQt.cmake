@@ -22,7 +22,7 @@ function(windeployqt target)
 
     if (MINGW)
         get_filename_component(mingw_path ${CMAKE_CXX_COMPILER} PATH)
-        set(CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS ${mingw_path}/libgcc_s_seg-1.dll ${mingw_path}/libstdc++-6.dll)
+        set(CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS ${mingw_path}/libgcc_s_seh-1.dll ${mingw_path}/libstdc++-6.dll)
     endif()
 
     include(InstallRequiredSystemLibraries)
