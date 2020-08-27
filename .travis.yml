@@ -19,15 +19,15 @@ matrix:
         #- 7z.exe e sqlite-amalgamation-3320300.zip -oc:\sqlite\include
         #- wget -q https://www.sqlite.org/2020/sqlite-dll-win64-x64-3320300.zip
         #- 7z.exe e sqlite-dll-win64-x64-3320300.zip -oc:\sqlite\lib
-        - choco install doxygen.install --ignore-checksums
-        - choco install graphviz
+        #- choco install doxygen.install
+        #- choco install graphviz
       cache:
         directories:
           - boost_1_73_0/
       script:
         - mkdir ${BUILD_DIR} && cd ${BUILD_DIR}
-        - cmake .. -G "MinGW Makefiles"
-        - mingw32-make
+        - cmake.exe .. -G "MinGW Makefiles"
+        - mingw32-make.exe install
 
     - os: linux
       addons:
