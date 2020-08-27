@@ -4,7 +4,7 @@ matrix:
   include:
     - os: windows
       env:
-        - PATH=/c/Qt/5.14.2/mingw73_64/bin:/c/Python/:/c/Python/Scripts:$PATH
+        - PATH=/c/Qt/5.14.2/mingw73_64/bin:/c/Qt/Tools/mingw730_64/bin:/c/Python/:/c/Python/Scripts:$PATH
         - BUILD_DIR=build
         - BOOST_ROOT=/c/Boost/
       before_install:
