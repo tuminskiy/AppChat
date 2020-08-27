@@ -38,19 +38,21 @@ def MakeBoostInstaller(platform):
 print("Platform: " + platform)
 
 boost_filename = "boost_{}_{}_{}.tar.gz".format(boost_version_major, boost_version_minor, boost_version_patch)
-boost_url = "https://sourceforge.net/projects/boost/files/boost/{}.{}.{}/{}/download".format(boost_version_major, boost_version_minor, boost_version_patch, boost_filename)
 
-print("Download boost . . .")
+if not os.path.isdir('boost_{}_{}_{}'.format(boost_version_major, boost_version_minor, boost_version_patch)):
+    boost_url = "https://sourceforge.net/projects/boost/files/boost/{}.{}.{}/{}/download".format(boost_version_major, boost_version_minor, boost_version_patch, boost_filename)
 
-r = requests.get(boost_url, allow_redirects=True)
+    print("Download boost . . .")
 
-open(boost_filename, "wb+").write(r.content)
-
-print("Unzip boost . . .")
-
-tar = tarfile.open(boost_filename, "r:gz")
-tar.extractall()
-tar.close()
+    r = requests.get(boost_url, allow_redirects=True)
+    
+    open(boost_filename, "wb+").write(r.content)
+    
+    print("Unzip boost . . .")
+    
+    tar = tarfile.open(boost_filename, "r:gz")
+    tar.extractall()
+    tar.close()
 
 print("Install boost . . .")
 
