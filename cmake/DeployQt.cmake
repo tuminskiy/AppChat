@@ -11,11 +11,19 @@ function(windeployqt target)
         COMMAND ${CMAKE_COMMAND} -E
             env PATH="${_qt_bin_dir}" "${WINDEPLOYQT_EXECUTABLE}"
                 --verbose 0
-                --compiler-runtime
+                --no-compiler-runtime
                 --no-translations
                 --no-angle
                 --no-opengl-sw
+                --dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/windeployqt"
                 \"$<TARGET_FILE:${target}>\"
         COMMENT "Deploying Qt . . ."
     )
+
+    if (MINGW)
+        get_filename_component(mingw_path ${CMAKE_CXX_COMPILER} PATH)
+        set(CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS ${mingw_path}/libgcc_s_seg-1.dll ${mingw_path}/libstdc++-6.dll)
+    endif()
+
+    include(InstallRequiredSystemLibraries)
 endfunction()
