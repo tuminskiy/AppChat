@@ -19,7 +19,7 @@ matrix:
         #- 7z.exe e sqlite-amalgamation-3320300.zip -oc:\sqlite\include
         #- wget -q https://www.sqlite.org/2020/sqlite-dll-win64-x64-3320300.zip
         #- 7z.exe e sqlite-dll-win64-x64-3320300.zip -oc:\sqlite\lib
-        - choco install doxygen.install
+        - choco install doxygen.install --ignore-checksums
         - choco install graphviz
       cache:
         directories:
